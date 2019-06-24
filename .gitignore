@@ -1,0 +1,4 @@
+# FILES REQUIRED TO BE LEFT UNTRACKED BY GIT
+
+*.pyc
+**/__pycache__/**
