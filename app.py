@@ -19,7 +19,7 @@ def get_word_post():
     # words separated by " " or "-"
     text = text.replace(' ', '')
     text = text.replace('-', '')
-    
+
     # get top word corrections from probability model
     top_words, top_probs = corrections_topK(text)
     # if the length of top_words in 1 then there is no correction for the text
@@ -39,9 +39,8 @@ def get_word_post():
     if(flag):
         return render_template('index.html', correct=None, segments=segmentations)
     else:
-        if(c_flag):
-            segmentations = [correction(w) for w in segmentations]
-            return render_template('index.html', correct=None, segments=segmentations)
+        if(not c_flag):
+            return render_template('index.html', correct=top_words, segments=segmentations)
         else:
             return render_template('index.html', correct=top_words, segments=None)
 
