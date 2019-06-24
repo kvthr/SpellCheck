@@ -36,13 +36,10 @@ def get_word_post():
         if (w not in WORDS) or (len(w)<2):
             flag = False
 
-    if(flag):
+    if(flag or c_flag):
         return render_template('index.html', correct=None, segments=segmentations)
     else:
-        if(not c_flag):
-            return render_template('index.html', correct=top_words, segments=segmentations)
-        else:
-            return render_template('index.html', correct=top_words, segments=None)
+        return render_template('index.html', correct=top_words, segments=None)
 
 if __name__=="__main__":
     app.run()
